@@ -1,0 +1,47 @@
+float posrectx = 0.0;
+float velorectx = 2.8;
+
+float posbolax;
+float posbolay;
+
+float velbolax = 2.0;
+float velbolay = 2.4; 
+
+int dirbolax = 1;
+int dirbolay = 1;
+
+void setup() {
+
+  size(700, 700);
+
+  ellipseMode(RADIUS);
+  posbolax = width/2;
+  posbolay = height/2;
+}
+
+void draw() {
+  background(#BB27CB);
+
+  posbolax = posbolax + (velbolax * dirbolax);
+  posbolay = posbolay + (velbolay * dirbolay);
+
+  if (posbolax > width - 70 || posbolax < 70) {
+    dirbolax *= -1;
+  }
+  if (posbolay > height - 70 || posbolay < 70) {
+    dirbolay *= -1;
+  }
+  fill(#FA962B);
+  noStroke();
+  ellipse (posbolax, posbolay, 70, 70);
+
+stroke(#8E3C09);
+strokeWeight(18);
+fill(255, 10);
+rect (posrectx, 290, 100, 190);
+
+posrectx = posrectx + velorectx;
+if (posrectx < 0 || posrectx > width - 100) {
+  velorectx = velorectx * -1;
+}  
+}
